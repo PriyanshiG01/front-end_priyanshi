@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #cb91bc
+  color : #1a1a1a;
+  padding: 20px;
+}
+
+header {
+  background: #0a2647;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+header p {
+  color: #aad4ff;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+figure {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+figure img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2c74b3;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: #555;
+  font-style: italic;
+}
+
+h2 {
+  color: #144272;
+  margin: 20px 0 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+#contact {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-icons img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+}
+
+.contact-icons img:hover {
+  transform: scale(1.1);
+}
+

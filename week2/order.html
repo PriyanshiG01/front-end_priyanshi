@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cities List</title>
+  <style>
+    ol.cities {
+      list-style-type: upper-roman;
+      font-family: Georgia, serif;
+    }
+
+    ol.cities li:nth-child(odd) {
+      color: #2e86de;
+      background-color: #dff9fb;
+      padding: 4px;
+    }
+
+    ol.cities li:nth-child(even) {
+      color: #eb4d4b;
+      background-color: #f6e58d;
+      font-style: italic;
+      padding: 4px;
+    }
+
+    ol.cities li:hover {
+      transform: scale(1.1);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Top Cities to Visit</h2>
+  <ol class="cities">
+    <li>Tokyo</li>
+    <li>Paris</li>
+    <li>Barcelona</li>
+    <li>New York</li>
+    <li>Istanbul</li>
+  </ol>
+</body>
+</html>
