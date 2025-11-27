@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Task Manager</title>
+
+<style>
+    body { font-family: Arial; padding: 20px; }
+    input, select, button { margin: 5px 0; padding: 5px; }
+    li { margin: 5px 0; }
+    .done { text-decoration: line-through; }
+</style>
+
+</head>
+<body>
+
+<h2>Task Manager</h2>
+
+<input id="taskInput" placeholder="Enter task">
+<button id="addBtn">Add</button>
+
+<br>
+
+<select id="filter">
+    <option value="all">All</option>
+    <option value="completed">Completed</option>
+    <option value="pending">Pending</option>
+</select>
+
+<ul id="taskList"></ul>
+
+<script>
+// Elements
+const input = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const list = document.getElementById("taskList");
+const filter = document.getElementById("filter");
+
+let tasks = [];
+
+// Load tasks
+window.onload = () => {
+    tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    display();
+};
+
+// Save
+function save() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Add Task
+addBtn.onclick = () => {
+    if (!input.value.trim()) return;
+
+    tasks.push({ id: Date.now(), text: input.value, completed: false });
+    input.value = "";
+    save();
+    display();
+};
+
+// Display Tasks
+function display() {
+    list.innerHTML = "";
+    let filtered = tasks;
+
+    if (filter.value === "completed") filtered = tasks.filter(t => t.completed);
+    if (filter.value === "pending") filtered = tasks.filter(t => !t.completed);
+
+    filtered.forEach(t => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+            <span class="${t.completed ? 'done' : ''}">${t.text}</span>
+            <button data-id="${t.id}" class="c">✔</button>
+            <button data-id="${t.id}" class="d">Delete</button>
+        `;
+        list.appendChild(li);
+    });
+}
+
+// Event Delegation
+list.onclick = (e) => {
+    let id = e.target.dataset.id;
+    if (!id) return;
+
+    if (e.target.classList.contains("d"))
+        tasks = tasks.filter(t => t.id != id);
+
+    if (e.target.classList.contains("c")) {
+        let task = tasks.find(t => t.id == id);
+        task.completed = !task.completed;
+    }
+
+    save();
+    display();
+};
+
+// Filter
+filter.onchange = display;
+</script>
+
+</body>
+</html>
