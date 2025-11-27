@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<img id="main" src="img1.jpg" width="300">
+
+<div id="thumbs">
+  <img src="https://images.pexels.com/photos/639086/pexels-photo-639086.jpeg?cs=srgb&dl=nature-purple-garden-639086.jpg&fm=jpg" width="80">
+  <img src="https://images.pexels.com/photos/863963/pexels-photo-863963.jpeg?cs=srgb&dl=nature-flowers-garden-863963.jpg&fm=jpg" width="80">
+  <img src="https://images.pexels.com/photos/35646/pexels-photo.jpg?cs=srgb&dl=garden-flower-close-up-35646.jpg&fm=jpg" width="80">
+</div>
+
+<script>
+document.getElementById("thumbs").addEventListener("click", function(e){
+  if(e.target.tagName === "IMG"){
+    document.getElementById("main").src = e.target.src;
+  }
+});
+</script>
+</body>
+</html>
